@@ -8,7 +8,7 @@ request.get(url, (error, response, body) => {
   if (error) {
     console.error(`${error}`);
   } else {
-    data = JSON.parse(body);
+    const data = JSON.parse(body);
     const n = process.argv[2] - 1;
     console.log(data.results[n].title);
   }
