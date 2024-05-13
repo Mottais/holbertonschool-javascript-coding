@@ -1,12 +1,15 @@
 #!/usr/bin/node
-// send request and get status
+// Retourne le code de statut de la réponse à une requête GET à une URL fournie
+
+// Importer le module request
 const request = require('request');
 
 const url = process.argv[2];
 
-request(url, (erreur, reponse) => {
+// Faire une requête GET à l'URL fournie
+request.get(url, (erreur, reponse) => {
   if (erreur) {
-    console.error(`Error making request: ${erreur.message}`);
+    console.log('code: 404');
   } else {
     console.log(`code: ${reponse.statusCode}`);
   }
