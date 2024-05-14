@@ -16,5 +16,4 @@ request(url, { json: true }, (erreur, response) => {
     }
     console.log(completedByUser);
   }
-
 });
