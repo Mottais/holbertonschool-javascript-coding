@@ -10,13 +10,11 @@ const path = process.argv[3];
 request.get(url, (erreur, reponse) => {
   if (erreur) {
     console.error(erreur);
-  } else {
-    fs.writeFile(path, reponse.body, 'utf-8', (err) => {
-      if (err) {
-        console.error('Error writing to file:', err);
-      } else {
-        console.log('File written successfully!');
-      }
-    });
+    return;
   }
+  fs.writeFile(path, reponse.body, 'utf-8', (err) => {
+    if (err) {
+      console.error('Error writing to file:', err);
+    }
+  });
 });
