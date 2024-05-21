@@ -1,33 +1,13 @@
-// Afficher le message de bienvenue initial
-console.log('Welcome to Holberton School, what is your name?');
+function useStdin() {
+  process.stdout.write('Welcome to Holberton School, what is your name?\n');
 
-// Définir l'encodage pour stdin afin de lire les chaînes de caractères
-process.stdin.setEncoding('utf8');
-
-// Gérer l'entrée utilisateur depuis stdin
-process.stdin.on('data', (data) => {
-  // Supprimer le caractère de nouvelle ligne à la fin de l'entrée
-  const name = data.trim();
-
-  // Afficher le nom de l'utilisateur
-  console.log(`Your name is: ${name}`);
-
-  // Quitter le processus proprement
-  process.exit(0);
-});
-
-// Gérer la sortie du processus et afficher le message de fermeture
-process.on('exit', () => {
-  console.log('This important software is now closing');
-});
-
-// Assurer la gestion des signaux pour terminer proprement
-process.on('SIGINT', () => {
-  console.log('This important software is now closing');
-  process.exit(0);
-});
-
-process.on('SIGTERM', () => {
-  console.log('This important software is now closing');
-  process.exit(0);
-});
+  process.stdin.on('data', (data) => {
+    process.stdout.write(`Your name is: ${data.toString()}`);
+    process.stdout.write('This important software is now closing\n');
+    process.exit();
+  });
+}
+module.exports = useStdin;
+if (require.main === module) {
+  useStdin();
+}
