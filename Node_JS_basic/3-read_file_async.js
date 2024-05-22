@@ -23,24 +23,30 @@ function parseDataToObject(data) {
 
 function countStudents(path) {
   return fs.readFile(path, 'utf8')
-    .then((data) => {
+    .then(data => {
       const students = parseDataToObject(data);
 
       // Calcul du nombre total d'étudiants
       let totalStudents = 0;
       Object.keys(students).forEach((key) => { totalStudents += students[key].length; });
 
-      // Affichage du nombre total d'étudiants
-      console.log(`Number of students: ${totalStudents}`);
+      // Préparation du résultat
+      let output = `Number of students: ${totalStudents}\n`;
 
-      // Affichage des informations pour chaque clé dans l'objet students
+      // Préparation des informations pour chaque clé dans l'objet students
       Object.keys(students).forEach((key) => {
         const count = students[key].length;
         const list = students[key].join(', ');
-        console.log(`Number of students in ${key}: ${count}. List: ${list}`);
+        output += `Number of students in ${key}: ${count}. List: ${list}\n`;
       });
+
+      // Affichage du résultat
+      console.log(output.trim());
+
+      // Retourner le résultat pour un usage ultérieur
+      return output.trim();
     })
-    .catch(() => {
+    .catch(err => {
       throw new Error('Cannot load the database');
     });
 }
