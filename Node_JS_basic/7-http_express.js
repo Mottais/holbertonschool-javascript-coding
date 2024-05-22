@@ -1,8 +1,6 @@
 const express = require('express');
 const countStudents = require('./3-read_file_async');
 
-const path = process.argv[2];
-
 const app = express();
 
 // 'a' : Le premier argument est toujours l'objet de requête. (req).
@@ -17,7 +15,7 @@ app.get('/', (a, b) => {
   b.send('Hello Holberton School!');
 });
 app.get('/students', (a, b) => {
-  countStudents(path)
+  countStudents(process.argv[2])
     .then((result) => {
       b.send(`This is the list of our students\n${result}`);
     })
