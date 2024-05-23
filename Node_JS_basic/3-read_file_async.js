@@ -42,7 +42,6 @@ function countStudents(path) {
         console.log(`Number of students in ${key}: ${count}. List: ${list}`);
       });
       // Retourner le résultat pour un usage ultérieur
-      // console.log(output.trim());
       return output.trim();
     })
     .catch(() => {
