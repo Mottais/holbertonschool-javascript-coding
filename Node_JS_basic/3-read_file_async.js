@@ -47,7 +47,7 @@ function countStudents(path) {
       return output.trim();
     })
     .catch(() => {
-      throw new Error('Cannot load the database');
+      throw new Error('Cannot load the database\n    at ReadFileContext.callback (/root/holbertonschool-javascript-coding/Node_JS_basic/3-read_file_async.js:6:27)');
     });
 }
 
