@@ -31,7 +31,9 @@ function countStudents(path) {
       Object.keys(students).forEach((key) => { totalStudents += students[key].length; });
 
       // Affichage du nombre total d'étudiants
-      console.log(`Number of students: ${totalStudents}`);
+      let output = `Number of students: ${totalStudents}\n`;
+      console.log(output);
+      output += '\n';
 
       // Affichage des informations pour chaque clé dans l'objet students
       Object.keys(students).forEach((key) => {
