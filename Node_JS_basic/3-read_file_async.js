@@ -30,24 +30,18 @@ function countStudents(path) {
       let totalStudents = 0;
       Object.keys(students).forEach((key) => { totalStudents += students[key].length; });
 
-      // Préparation du résultat
-      let output = `Number of students: ${totalStudents}\n`;
+      // Affichage du nombre total d'étudiants
+      console.log(`Number of students: ${totalStudents}`);
 
-      // Préparation des informations pour chaque clé dans l'objet students
+      // Affichage des informations pour chaque clé dans l'objet students
       Object.keys(students).forEach((key) => {
         const count = students[key].length;
         const list = students[key].join(', ');
-        output += `Number of students in ${key}: ${count}. List: ${list}\n`;
+        console.log(`Number of students in ${key}: ${count}. List: ${list}`);
       });
-
-      // Affichage du résultat
-      console.log(output.trim());
-
-      // Retourner le résultat pour un usage ultérieur
-      return output.trim();
     })
     .catch(() => {
-      throw new Error('Cannot load the database\n    at ReadFileContext.callback (/root/holbertonschool-javascript-coding/Node_JS_basic/3-read_file_async.js:6:27)');
+      throw new Error('Cannot load the database');
     });
 }
 
