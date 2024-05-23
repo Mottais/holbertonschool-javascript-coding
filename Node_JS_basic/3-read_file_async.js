@@ -30,17 +30,20 @@ function countStudents(path) {
       let totalStudents = 0;
       Object.keys(students).forEach((key) => { totalStudents += students[key].length; });
 
-      // Affichage du nombre total d'étudiants
+      // Préparation du résultat
       let output = `Number of students: ${totalStudents}`;
-      console.log(output);
-      output += '\n';
 
-      // Affichage des informations pour chaque clé dans l'objet students
+      // Préparation des informations pour chaque clé dans l'objet students
       Object.keys(students).forEach((key) => {
         const count = students[key].length;
         const list = students[key].join(', ');
-        console.log(`Number of students in ${key}: ${count}. List: ${list}`);
+        output += `\nNumber of students in ${key}: ${count}. List: ${list}`;
       });
+
+      // Affichage du résultat
+      console.log(output);
+
+
     })
     .catch(() => {
       throw new Error('Cannot load the database');
