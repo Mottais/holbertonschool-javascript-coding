@@ -23,12 +23,7 @@ function parseDataToObject(data) {
 
 function countStudents(path) {
   return fs.readFile(path, 'utf8')
-    .then((data) => {
-      const students = parseDataToObject(data);
-
-      // Retourner le résultat pour un usage ultérieur
-      return students;
-    })
+    .then((data) => parseDataToObject(data))
     .catch(() => {
       throw new Error('Cannot load the database');
     });
