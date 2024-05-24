@@ -8,7 +8,8 @@ class StudentsController {
         Object.entries(result).forEach(([key, value]) => {
           responseStr += `\nNumber of students in ${key}: ${value.length}. List: ${value.join(', ')}`;
         });
-        response.status(200).send(responseStr);
+        response.status(200);
+        response.send(responseStr);
       })
       .catch((error) => { response.status(500).send(error.message); });
   }
@@ -19,9 +20,15 @@ class StudentsController {
         const { major } = request.params;
         if (Object.prototype.hasOwnProperty.call(result, major)) {
           response.status(200).send(`List: ${result[major].join(', ')}`);
-        } else { response.status(500).send('Major parameter must be CS or SWE'); }
+        } else {
+          response.status(500);
+          response.send('Major parameter must be CS or SWE');
+        }
       })
-      .catch((error) => { response.status(500).send(error.message); });
+      .catch((error) => {
+        response.status(500);
+        response.send(error.message);
+      });
   }
 }
 
