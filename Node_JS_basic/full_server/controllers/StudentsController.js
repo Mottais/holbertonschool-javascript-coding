@@ -1,6 +1,7 @@
 const readDatabase = require('../utils');
 
 class StudentsController {
+  
   static getAllStudents(request, response) {
     readDatabase(process.argv[2])
       .then((result) => {
